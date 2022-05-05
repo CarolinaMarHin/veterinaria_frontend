@@ -1,6 +1,6 @@
 :host {
-    border: 0 solid #e1e1e1;
-    border-bottom-width: 1px;
+    border: 0px solid #01a65d;
+    border-bottom-width: 3px;
     display: block;
     height: 48px;
     padding: 0 16px;
@@ -38,6 +38,10 @@ nav a {
 }
 
 span {
-    font-size: 20px;
+    font-size: 18px;
     color: #000;
+}
+
+.opcion-mascota-active, .opcion-servicio-active {
+    background: #cdf0cc;
 }
