@@ -1,0 +1,43 @@
+:host {
+    border: 0 solid #e1e1e1;
+    border-bottom-width: 1px;
+    display: block;
+    height: 48px;
+    padding: 0 16px;
+}
+.nav {
+    place-content: center;
+}
+
+nav a {
+    color: #8f8f8f;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 48px;
+    margin-right: 20px;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.contenedor-opciones {
+    background-color: #4bc94947;
+    color: rgb(9 93 91);
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 16px;
+    border: 3px solid #01a65d;
+    border-radius: 10px;
+}
+
+.icono-opciones {
+    width: 30px;
+    height: auto;
+    margin: 0px 20px;
+}
+
+span {
+    font-size: 20px;
+    color: #000;
+}

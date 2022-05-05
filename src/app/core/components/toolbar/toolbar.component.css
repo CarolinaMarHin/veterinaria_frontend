@@ -1,0 +1,30 @@
+:host {
+    background-color: #4bc94947;
+    color: rgb(9 93 91);
+    display: block;
+    height: auto;
+    padding: 0 16px;
+    border: 3px solid #01a65d;
+    border-radius: 10px;
+}
+
+.contenedor-toolbar {
+    text-align-last: center;
+    padding: 10px;
+}
+
+span {
+    font-family: fantasy;
+    display: list-item;
+    font-size: 60px;
+    font-weight: normal;
+    letter-spacing: 3px;
+    line-height: 48px;
+}
+
+.logo-veterinaria {
+    width: 70px;
+    height: 50%;
+    margin: 10px 20px;
+    margin-bottom: 0;
+}
