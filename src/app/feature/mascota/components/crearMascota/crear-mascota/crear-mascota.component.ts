@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Mascota } from '../../../shared/model/mascota';
-
 @Component({
   selector: 'app-crear-mascota',
   templateUrl: './crear-mascota.component.html',
@@ -9,10 +8,12 @@ import { Mascota } from '../../../shared/model/mascota';
 export class CrearMascotaComponent implements OnInit {
 
   constructor() { }
-  
-  public mascota: Mascota
 
+  public mascota: Mascota = new Mascota();
+  
   ngOnInit(): void {}
 
-
+  public registroMascota() {
+    console.log("Mascota", this.mascota);
+  }
 }
