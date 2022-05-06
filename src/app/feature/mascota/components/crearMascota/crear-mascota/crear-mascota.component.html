@@ -1,0 +1,28 @@
+<form id="registro-mascota">
+    <div class="row">
+        <label class="required" for="codigo-mascota">Codigo mascota:</label><br/>
+        <input id="codigo-mascota" class="input" name="codigo-mascota" type="text" size="20" ([ngModel])="mascota.codigoMascota"/><br/>
+        <span id="name-validation" class="error_message"></span>
+    </div>
+    <div class="row">
+        <label class="required" for="nombre-mascota">Nombre mascota:</label><br/>
+        <input id="nombre-mascota" class="input" name="nombre-mascota" type="text" size="50" ([ngModel])="mascota.nombreMascota"/><br/>
+        <span id="name-validation" class="error_message"></span>
+    </div>
+    <div class="row">
+        <label class="required" for="raza">Raza:</label><br/>
+        <input id="raza" class="input" name="raza" type="text" size="50" ([ngModel])="mascota.raza"/><br/>
+        <span id="name-validation" class="error_message"></span>
+    </div>
+    <div class="row">
+        <label class="required" for="peso">Peso:</label><br/>
+        <input id="peso" class="input" name="peso" type="number" max="99" ([ngModel])="mascota.peso"/><br/>
+        <span id="name-validation" class="error_message"></span>
+    </div>
+    <div class="row">
+        <label class="required" for="fecha-nacimiento">Fecha nacimiento:</label><br/>
+        <input id="fecha-nacimiento" class="input" name="fecha-nacimiento" type="date" ([ngModel])="mascota.fechaNacimientoMascota"/><br/>
+        <span id="name-validation" class="error_message"></span>
+    </div>
+    <input id="crear-mascota" type="submit" value="Crear Mascota"/>
+</form>
