@@ -10,6 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MascotaComponent } from './feature/mascota/components/mascota/mascota.component';
 import { CrearMascotaComponent } from './feature/mascota/components/crearMascota/crear-mascota/crear-mascota.component';
+import { MascotaService } from './feature/mascota/shared/service/mascota/mascota.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CrearMascotaComponent } from './feature/mascota/components/crearMascota
     FormsModule,
     NgbModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, MascotaService],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

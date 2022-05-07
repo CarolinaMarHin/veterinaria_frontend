@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  endpoint: '/prospectos-vida',
+  endpoint_productos: '/veterinaria',
   endpoint_veterinaria: '/veterinaria',
 };

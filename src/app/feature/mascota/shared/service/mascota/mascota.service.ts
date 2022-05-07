@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from '@core-service/http.service';
+import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Mascota } from '../../model/mascota';
 
@@ -7,19 +7,28 @@ import { Mascota } from '../../model/mascota';
 @Injectable()
 export class MascotaService {
 
-  constructor(protected http: HttpService) {}
+  constructor(
+    protected httpService: HttpService
+    ) {}
 
-  public consultar(mascota: Mascota) {
-    return this.http.doGet<Mascota[]>(`${environment.endpoint_veterinaria}/mascota/${mascota.id}`, this.http.optsName('consultar mascota'));
+  public crear(mascota: Mascota) {
+    debugger;
+    console.log(`${environment.endpoint_productos}/mascotas`, mascota);
+    return this.httpService.doPost<Mascota, Number>(`${environment.endpoint_productos}/mascotas`, mascota,
+                                                this.httpService.optsName('crear/actualizar mascota'));
   }
 
-  public guardar(mascota: Mascota) {
-    return this.http.doPost<Mascota, boolean>(`${environment.endpoint_veterinaria}/mascota`, mascota,
-                                                this.http.optsName('crear/actualizar mascota'));
+  public consultar(mascota: Mascota) {
+    return this.httpService.doGet<Mascota[]>(`${environment.endpoint_productos}/mascota/${mascota.id}`, this.httpService.optsName('consultar mascota'));
+  }
+
+  public actualizar(mascota: Mascota) {
+    return this.httpService.doPost<Mascota, boolean>(`${environment.endpoint_productos}/mascota`, mascota,
+                                                this.httpService.optsName('crear/actualizar mascota'));
   }
 
   public eliminar(mascota: Mascota) {
-    return this.http.doDelete<boolean>(`${environment.endpoint_veterinaria}/mascota/${mascota.id}`,
-                                                 this.http.optsName('eliminar mascota'));
+    return this.httpService.doDelete<boolean>(`${environment.endpoint_productos}/mascota/${mascota.id}`,
+                                                 this.httpService.optsName('eliminar mascota'));
   }
 }

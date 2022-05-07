@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mascota } from '../../../shared/model/mascota';
+import { MascotaService } from '../../../shared/service/mascota/mascota.service';
+
 @Component({
   selector: 'app-crear-mascota',
   templateUrl: './crear-mascota.component.html',
@@ -7,13 +9,18 @@ import { Mascota } from '../../../shared/model/mascota';
 })
 export class CrearMascotaComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected mascotaService: MascotaService) {
+  }
 
   public mascota: Mascota = new Mascota();
+  //public response: any;
   
   ngOnInit(): void {}
 
   public registroMascota() {
-    console.log("Mascota", this.mascota);
+    debugger;
+    this.mascotaService.crear(this.mascota).subscribe(
+      (response) => {console.log(response, typeof response)}
+    );
   }
 }

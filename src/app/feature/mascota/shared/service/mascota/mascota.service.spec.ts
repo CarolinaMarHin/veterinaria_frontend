@@ -1,61 +1,60 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
-import { ProductoService } from './mascota.service';
 import { environment } from 'src/environments/environment';
 import { HttpService } from 'src/app/core/services/http.service';
-import { Producto } from '../../model/producto';
 import { HttpResponse } from '@angular/common/http';
+import { MascotaService } from './mascota.service';
+import { Mascota } from '../../model/mascota';
 
-describe('ProductoService', () => {
+describe('MascotaService', () => {
   let httpMock: HttpTestingController;
-  let service: ProductoService;
-  const apiEndpointProductoConsulta = `${environment.endpoint_productos}/tiposFamilia`;
-  const apiEndpointProductos = `${environment.endpoint_productos}/productos`;
+  let service: MascotaService;
+  const apiEndpointMascotaConsulta = `${environment.endpoint_productos}/tiposFamilia`;
+  const apiEndpointMascotas = `${environment.endpoint_productos}/productos`;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProductoService, HttpService]
+      providers: [MascotaService, HttpService]
     });
     httpMock = injector.inject(HttpTestingController);
-    service = TestBed.inject(ProductoService);
+    service = TestBed.inject(MascotaService);
   });
 
   it('should be created', () => {
-    const productService: ProductoService = TestBed.inject(ProductoService);
+    const productService: MascotaService = TestBed.inject(MascotaService);
     expect(productService).toBeTruthy();
   });
 
   it('deberia listar productos', () => {
-    const dummyProductos = [
-      new Producto('1', 'Producto 1'), new Producto('2', 'Producto 2')
+    const dummyMascotas = [
+      new Mascota(), new Mascota()
     ];
-    service.consultar().subscribe(productos => {
+    service.consultar(new Mascota()).subscribe(productos => {
       expect(productos.length).toBe(2);
-      expect(productos).toEqual(dummyProductos);
+      expect(productos).toEqual(dummyMascotas);
     });
-    const req = httpMock.expectOne(apiEndpointProductoConsulta);
+    const req = httpMock.expectOne(apiEndpointMascotaConsulta);
     expect(req.request.method).toBe('GET');
-    req.flush(dummyProductos);
+    req.flush(dummyMascotas);
   });
 
   it('deberia crear un producto', () => {
-    const dummyProducto = new Producto('1', 'Producto 1');
-    service.guardar(dummyProducto).subscribe((respuesta) => {
+    const dummyMascota = new Mascota();
+    service.crear(dummyMascota).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
-    const req = httpMock.expectOne(apiEndpointProductos);
+    const req = httpMock.expectOne(apiEndpointMascotas);
     expect(req.request.method).toBe('POST');
     req.event(new HttpResponse<boolean>({body: true}));
   });
 
   it('deberia eliminar un producto', () => {
-    const dummyProducto = new Producto('1', 'Producto 1');
-    service.eliminar(dummyProducto).subscribe((respuesta) => {
+    const dummyMascota = new Mascota();
+    service.eliminar(dummyMascota).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
-    const req = httpMock.expectOne(`${apiEndpointProductos}/1`);
+    const req = httpMock.expectOne(`${apiEndpointMascotas}/1`);
     expect(req.request.method).toBe('DELETE');
     req.event(new HttpResponse<boolean>({body: true}));
   });

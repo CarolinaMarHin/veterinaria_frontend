@@ -6,6 +6,8 @@
     padding: 0 16px;
     border: 3px solid #01a65d;
     border-radius: 10px;
+    width: max-content;    
+    align-self: center;
 }
 
 .contenedor-toolbar {
@@ -20,6 +22,7 @@ span {
     font-weight: normal;
     letter-spacing: 3px;
     line-height: 48px;
+    list-style-type: none;
 }
 
 .logo-veterinaria {
@@ -27,4 +30,13 @@ span {
     height: 50%;
     margin: 10px 20px;
     margin-bottom: 0;
+}
+
+::marker {
+    unicode-bidi: none;
+    font-variant-numeric: none;
+    text-transform: none;
+    text-indent: none !important;
+    text-align: none !important;
+    text-align-last: none !important;
 }

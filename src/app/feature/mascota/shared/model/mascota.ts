@@ -3,17 +3,8 @@ export class Mascota {
     nombreMascota: string;
     codigoMascota: string;
     raza: string;
-    fechaNacimientoMascota: Date;
+    fechaNacimientoMascota: string;
     peso: number;
 
     constructor(){}
-
-    /* constructor(id:number, nombreMascota: string, codigoMascota: string, raza: string, fechaNacimientoMascota: Date, peso: number) {
-        this.id = id;
-        this.nombreMascota = nombreMascota;
-        this.codigoMascota = codigoMascota;
-        this.raza = raza;
-        this.fechaNacimientoMascota = fechaNacimientoMascota;
-        this.peso = peso;
-    } */
 }
