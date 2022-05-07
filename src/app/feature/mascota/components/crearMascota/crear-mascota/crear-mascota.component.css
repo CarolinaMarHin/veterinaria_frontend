@@ -13,9 +13,6 @@
 }
 
 .formulario-mascota input:focus {
-    width: 50%;
-    margin-left: 50px;
-    font-family: cursive;
     border: 3px solid #01a65d !important;
     border-radius: 10px;
     outline: none;
@@ -40,4 +37,8 @@
 
 .div-input-mascota {
     margin: 10px 0px;
+}
+
+.alert {
+    margin: 15px;
 }
