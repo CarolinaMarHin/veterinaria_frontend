@@ -9,8 +9,8 @@ import { Mascota } from '../../model/mascota';
 describe('MascotaService', () => {
   let httpMock: HttpTestingController;
   let service: MascotaService;
-  const apiEndpointMascotaConsulta = `${environment.endpoint_productos}/tiposFamilia`;
-  const apiEndpointMascotas = `${environment.endpoint_productos}/productos`;
+  const apiEndpointMascotaConsulta = `${environment.endpoint_veterinaria}/mascotas`;
+  const apiEndpointMascotas = `${environment.endpoint_veterinaria}/mascotas`;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
@@ -39,14 +39,15 @@ describe('MascotaService', () => {
     req.flush(dummyMascotas);
   });
 
-  it('deberia crear un producto', () => {
-    const dummyMascota = new Mascota();
+  it('deberia crear una mascota', () => {
+    const dummyMascota = new Mascota("Guardian", "1122", "Criollo", "2020-12-12", 21);
     service.crear(dummyMascota).subscribe((respuesta) => {
-      expect(respuesta).toEqual(true);
+      console.log("carolina", respuesta);
+      expect(respuesta).toBeGreaterThan(0);
     });
     const req = httpMock.expectOne(apiEndpointMascotas);
     expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<boolean>({body: true}));
+    req.event(new HttpResponse<number>({body: 1}));
   });
 
   it('deberia eliminar un producto', () => {

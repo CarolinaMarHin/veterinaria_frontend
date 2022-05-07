@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MascotaService } from '../../../shared/service/mascota/mascota.service';
 
 import { CrearMascotaComponent } from './crear-mascota.component';
 
@@ -8,7 +9,7 @@ describe('CrearMascotaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrearMascotaComponent ]
+      declarations: [ CrearMascotaComponent, MascotaService ]
     })
     .compileComponents();
   });

@@ -12,23 +12,22 @@ export class MascotaService {
     ) {}
 
   public crear(mascota: Mascota) {
-    debugger;
-    console.log(`${environment.endpoint_productos}/mascotas`, mascota);
-    return this.httpService.doPost<Mascota, Number>(`${environment.endpoint_productos}/mascotas`, mascota,
+    console.log(`${environment.endpoint_veterinaria}/mascotas`, mascota);
+    return this.httpService.doPost<Mascota, Number>(`${environment.endpoint_veterinaria}/mascotas`, mascota,
                                                 this.httpService.optsName('crear/actualizar mascota'));
   }
 
   public consultar(mascota: Mascota) {
-    return this.httpService.doGet<Mascota[]>(`${environment.endpoint_productos}/mascota/${mascota.id}`, this.httpService.optsName('consultar mascota'));
+    return this.httpService.doGet<Mascota[]>(`${environment.endpoint_veterinaria}/mascota/${mascota.id}`, this.httpService.optsName('consultar mascota'));
   }
 
   public actualizar(mascota: Mascota) {
-    return this.httpService.doPost<Mascota, boolean>(`${environment.endpoint_productos}/mascota`, mascota,
+    return this.httpService.doPost<Mascota, boolean>(`${environment.endpoint_veterinaria}/mascota`, mascota,
                                                 this.httpService.optsName('crear/actualizar mascota'));
   }
 
   public eliminar(mascota: Mascota) {
-    return this.httpService.doDelete<boolean>(`${environment.endpoint_productos}/mascota/${mascota.id}`,
+    return this.httpService.doDelete<boolean>(`${environment.endpoint_veterinaria}/mascota/${mascota.id}`,
                                                  this.httpService.optsName('eliminar mascota'));
   }
 }
