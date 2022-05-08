@@ -1,26 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { HttpService } from '@core/services/http.service';
 import { MascotaService } from '../../../shared/service/mascota/mascota.service';
 
-import { CrearMascotaComponent } from './crear-mascota.component';
-
 describe('CrearMascotaComponent', () => {
-  let component: CrearMascotaComponent;
-  let fixture: ComponentFixture<CrearMascotaComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CrearMascotaComponent, MascotaService ]
-    })
-    .compileComponents();
-  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrearMascotaComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [MascotaService, HttpService]
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    const crearMascotaService: MascotaService = TestBed.inject(MascotaService);
+    expect(crearMascotaService).toBeTruthy();
   });
 });

@@ -22,17 +22,18 @@ describe('MascotaService', () => {
   });
 
   it('should be created', () => {
-    const productService: MascotaService = TestBed.inject(MascotaService);
-    expect(productService).toBeTruthy();
+    const mascotaService: MascotaService = TestBed.inject(MascotaService);
+    expect(mascotaService).toBeTruthy();
   });
 
-  it('deberia listar productos', () => {
+  it('deberia listar mascotas', () => {
     const dummyMascotas = [
-      new Mascota(), new Mascota()
+      new Mascota("Guardian", "1122", "Criollo", "2020-12-12", 21), 
+      new Mascota("Titan", "2211", "Criollo", "2020-12-12", 21)
     ];
-    service.consultar(new Mascota()).subscribe(productos => {
-      expect(productos.length).toBe(2);
-      expect(productos).toEqual(dummyMascotas);
+    service.consultar().subscribe(mascotas => {
+      expect(mascotas.length).toBe(2);
+      expect(mascotas).toEqual(dummyMascotas);
     });
     const req = httpMock.expectOne(apiEndpointMascotaConsulta);
     expect(req.request.method).toBe('GET');
@@ -42,7 +43,6 @@ describe('MascotaService', () => {
   it('deberia crear una mascota', () => {
     const dummyMascota = new Mascota("Guardian", "1122", "Criollo", "2020-12-12", 21);
     service.crear(dummyMascota).subscribe((respuesta) => {
-      console.log("carolina", respuesta);
       expect(respuesta).toBeGreaterThan(0);
     });
     const req = httpMock.expectOne(apiEndpointMascotas);
@@ -50,10 +50,13 @@ describe('MascotaService', () => {
     req.event(new HttpResponse<number>({body: 1}));
   });
 
-  it('deberia eliminar un producto', () => {
-    const dummyMascota = new Mascota();
-    service.eliminar(dummyMascota).subscribe((respuesta) => {
-      expect(respuesta).toEqual(true);
+  it('deberia eliminar una mascota', () => {
+    const dummyMascotas = [
+      new Mascota("Guardian", "1122", "Criollo", "2020-12-12", 21, 1), 
+      new Mascota("Titan", "2211", "Criollo", "2020-12-12", 21, 2)
+    ];
+    service.eliminar(dummyMascotas[0]).subscribe((respuesta) => {
+      expect(respuesta).toBeTruthy();
     });
     const req = httpMock.expectOne(`${apiEndpointMascotas}/1`);
     expect(req.request.method).toBe('DELETE');
