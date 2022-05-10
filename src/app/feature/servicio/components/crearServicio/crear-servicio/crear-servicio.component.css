@@ -1,0 +1,44 @@
+.contenedor-formulario {
+    text-align: center;
+}
+
+.formulario-mascota {
+    display: inline-block;
+}
+
+.formulario-mascota input {
+    width: 50%;
+    margin-left: 50px;
+    font-family: cursive;
+}
+
+.formulario-mascota input:focus {
+    border: 3px solid #01a65d !important;
+    border-radius: 10px;
+    outline: none;
+}
+
+.formulario-mascota label {
+    width: 30%;
+    text-align: left;
+    float: left;
+    font-family: cursive;
+}
+
+.formulario-mascota .input-btn-crear {
+    width: auto;
+    margin-right: 0px;
+    margin-left: 0px;
+    background-color: #4bc94947;
+    color: rgb(9 93 91);
+    border: 3px solid #01a65d;
+    border-radius: 10px;
+}
+
+.div-input-mascota {
+    margin: 10px 0px;
+}
+
+.alert {
+    margin: 15px;
+}

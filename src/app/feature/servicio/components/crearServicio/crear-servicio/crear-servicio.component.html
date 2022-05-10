@@ -3,22 +3,20 @@
         <div class="div-input-servicio">
             <label for="servicios">Selecciona el servicio</label>
             <select name="servicios" id="lista-servicios">
-                <option *ngFor="let servicio of listaServicios" id="servicio-{{servicio.id}}" value="servicio.nombreServicio">{{servicio.nombreServicio}} - {{servicio.precioServicio}}</option>
+                <option *ngFor="let servicio of listaServicios" id="servicio-{{servicio.id}}" value="{{servicio.nombreServicio}}">{{servicio.nombreServicio}} - {{servicio.precioServicio}}</option>
             </select>
         </div>
         <div class="div-input-servicio">
-            <ul>
-                <li>Veterinario 1</li>
-                <li>Veterinario 2</li>
-                <li>Veterinario 3</li>
-            </ul>
+            <label for="veterinarios">Selecciona el veterinario</label>
+            <select name="veterinarios" id="lista-veterinarios">
+                <option *ngFor="let veterinario of listaVeterinarios" id="veterinario-{{veterinario.id}}" value="{{veterinario.nombreVeterinario}}">{{veterinario.id}} - {{veterinario.nombreVeterinario}}</option>
+            </select>
         </div>
         <div class="div-input-servicio">
-            <ul>
-                <li>Servicio 1</li>
-                <li>Servicio 2</li>
-                <li>Servicio 3</li>
-            </ul>
+            <label for="mascotas">Selecciona el veterinario</label>
+            <select name="mascotas" id="lista-mascotas">
+                <option *ngFor="let mascota of listaMascotas" id="mascota-{{mascota.id}}" value="{{mascota.nombreMascota}}">{{mascota.id}} - {{mascota.nombreMascota}}</option>
+            </select>
         </div>
         <div class="div-input-servicio">
             <label class="required" for="peso">Peso:</label>
