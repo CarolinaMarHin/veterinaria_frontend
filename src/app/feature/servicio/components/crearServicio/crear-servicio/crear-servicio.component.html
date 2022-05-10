@@ -2,25 +2,28 @@
     <form id="registro-servicio" class="formulario-servicio">
         <div class="div-input-servicio">
             <label for="servicios">Selecciona el servicio</label>
-            <select name="servicios" id="lista-servicios">
-                <option *ngFor="let servicio of listaServicios" id="servicio-{{servicio.id}}" value="{{servicio.nombreServicio}}">{{servicio.nombreServicio}} - {{servicio.precioServicio}}</option>
+            <select name="servicios" id="lista-servicios" (change)="actualizarServicio($event.target.value)">
+                <option>Selecciona un servicio</option>
+                <option *ngFor="let servicio of listaServicios" value="servicio-{{servicio.id}}">{{servicio.nombreServicio}} - ${{servicio.precioServicio}}</option>
             </select>
         </div>
         <div class="div-input-servicio">
             <label for="veterinarios">Selecciona el veterinario</label>
-            <select name="veterinarios" id="lista-veterinarios">
-                <option *ngFor="let veterinario of listaVeterinarios" id="veterinario-{{veterinario.id}}" value="{{veterinario.nombreVeterinario}}">{{veterinario.id}} - {{veterinario.nombreVeterinario}}</option>
+            <select name="veterinarios" id="lista-veterinarios" (change)="actualizarVeterinario($event.target.value)">
+                <option>Selecciona el veterinario</option>
+                <option *ngFor="let veterinario of listaVeterinarios" value="veterinario-{{veterinario.id}}">{{veterinario.cedulaVeterinario}} - {{veterinario.nombreVeterinario}}</option>
             </select>
         </div>
         <div class="div-input-servicio">
             <label for="mascotas">Selecciona la mascota</label>
-            <select name="mascotas" id="lista-mascotas">
-                <option *ngFor="let mascota of listaMascotas" id="mascota-{{mascota.id}}" value="{{mascota.nombreMascota}}">{{mascota.id}} - {{mascota.nombreMascota}}</option>
+            <select name="mascotas" id="lista-mascotas" (change)="actualizarMascota($event.target.value)">
+                <option>Selecciona la mascota</option>
+                <option *ngFor="let mascota of listaMascotas" value="mascota-{{mascota.id}}">{{mascota.codigoMascota}} - {{mascota.nombreMascota}}</option>
             </select>
         </div>
         <div class="div-input-servicio">
             <label for="Precio">Precio:</label>
-            <input id="precio" class="input" name="precio" type="number" value="20000" disabled/>
+            <input id="precio" class="input" name="precio" type="text" value="{{precioServicioString}}" disabled/>
         </div>
         <div class="div-input-servicio">
             <label class="required" for="fecha-compra">Fecha compra:</label>
@@ -29,7 +32,7 @@
         </div>
         <input id="crear-servicio" class="input-btn-crear" type="submit" value="Crear Mascota"/>
         <br>
-        <div class="alert alert-danger">Error al registrar el servicio, intente nuevamente.</div>
-        <div class="alert alert-success">Registro exitoso.</div>
+        <div class="alert alert-danger" *ngIf="mostrarMensajeError">Error al registrar el servicio, intente nuevamente.</div>
+        <div class="alert alert-success" *ngIf="mostrarMensaje">Registro exitoso.</div>
     </form>
     </div>
