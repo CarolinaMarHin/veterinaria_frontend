@@ -4,6 +4,7 @@
 
 .formulario-mascota {
     display: inline-block;
+    text-align: -webkit-center;
 }
 
 .formulario-mascota input {
@@ -37,14 +38,19 @@
 
 .div-input-mascota {
     margin: 10px 0px;
+    width: 65%;
 }
 
 .alert {
     margin: 15px;
 }
 
-
 @media screen and (max-width: 998px) {
+
+    .formulario-mascota {
+        padding: 10px;
+    }
+
     .div-input-mascota {
         margin: 5px 0px;
     }
