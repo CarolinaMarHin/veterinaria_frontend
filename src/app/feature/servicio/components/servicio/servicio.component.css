@@ -1,0 +1,36 @@
+:host {
+    text-align: -webkit-center;
+}
+
+.contenedor-menu {
+    text-align: -webkit-center;
+    width: 60%;
+    height: auto;
+    margin: 20px;
+}
+
+.btn-menu {
+    position: relative;
+    width: 50%;
+    border-radius: 10px;
+    background: #cdf0cc;
+    border: 3px solid #01a65d;
+}
+
+.img-btn {
+    width: inherit;
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 998px) {
+    .contenedor-menu {
+        text-align: -webkit-center;
+        width: 75%;
+        height: auto;
+        margin: 20px;
+    }
+  }
+
+
+

@@ -9,17 +9,8 @@ export class ServicioService {
 
   constructor(protected http: HttpService) {}
 
-  public consultar(servicio: Servicio) {
-    return this.http.doGet<Servicio[]>(`${environment.endpoint_veterinaria}/servicio/${servicio.id}`, this.http.optsName('consultar servicio'));
+  public consultar() {
+    return this.http.doGet<Servicio[]>(`${environment.endpoint_veterinaria}/servicios`, this.http.optsName('consultar servicio'));
   }
 
-  public guardar(servicio: Servicio) {
-    return this.http.doPost<Servicio, boolean>(`${environment.endpoint_veterinaria}/servicio`, servicio,
-                                                this.http.optsName('crear/actualizar servicio'));
-  }
-
-  public eliminar(servicio: Servicio) {
-    return this.http.doDelete<boolean>(`${environment.endpoint_veterinaria}/servicio/${servicio.id}`,
-                                                 this.http.optsName('eliminar servicio'));
-  }
 }

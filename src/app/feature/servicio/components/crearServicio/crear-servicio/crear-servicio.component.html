@@ -1,0 +1,38 @@
+<div class="contenedor-formulario">
+    <form id="registro-servicio" class="formulario-servicio">
+        <div class="div-input-servicio">
+            <label for="servicios">Selecciona el servicio</label>
+            <select name="servicios" id="lista-servicios">
+                <option *ngFor="let servicio of listaServicios" id="servicio-{{servicio.id}}" value="servicio.nombreServicio">{{servicio.nombreServicio}} - {{servicio.precioServicio}}</option>
+            </select>
+        </div>
+        <div class="div-input-servicio">
+            <ul>
+                <li>Veterinario 1</li>
+                <li>Veterinario 2</li>
+                <li>Veterinario 3</li>
+            </ul>
+        </div>
+        <div class="div-input-servicio">
+            <ul>
+                <li>Servicio 1</li>
+                <li>Servicio 2</li>
+                <li>Servicio 3</li>
+            </ul>
+        </div>
+        <div class="div-input-servicio">
+            <label class="required" for="peso">Peso:</label>
+            <input id="peso" class="input" name="peso" type="number" max="99"/>
+            <span id="name-validation" class="error_message"></span>
+        </div>
+        <div class="div-input-servicio">
+            <label class="required" for="fecha-nacimiento">Fecha nacimiento:</label>
+            <input id="fecha-nacimiento" class="input" name="fecha-nacimiento" type="date"/>
+            <span id="name-validation" class="error_message"></span>
+        </div>
+        <input id="crear-servicio" class="input-btn-crear" type="submit" value="Crear Mascota"/>
+        <br>
+        <div class="alert alert-danger">Error al registrar el servicio, intente nuevamente.</div>
+        <div class="alert alert-success">Registro exitoso.</div>
+    </form>
+    </div>
