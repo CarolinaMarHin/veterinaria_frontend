@@ -8,7 +8,7 @@ import { ServicioComponent } from './feature/servicio/components/servicio/servic
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   //{ path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) },
   { path: 'mascota', component: MascotaComponent, canActivate: [SecurityGuard] },
   { path: 'mascota/crear-mascota', component: CrearMascotaComponent, canActivate: [SecurityGuard] },

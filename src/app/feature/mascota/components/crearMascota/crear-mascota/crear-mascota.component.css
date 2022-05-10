@@ -42,3 +42,15 @@
 .alert {
     margin: 15px;
 }
+
+
+@media screen and (max-width: 998px) {
+    .div-input-mascota {
+        margin: 5px 0px;
+    }
+
+    .formulario-mascota label {
+        width: 35%;
+        font-size: 16px;
+    }
+}

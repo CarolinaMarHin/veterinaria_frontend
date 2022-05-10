@@ -1,7 +1,7 @@
 <nav>
   <ul class="nav">
-    <li *ngFor="let item of items" class="nav-item" [ngClass]="(item.claseActiva == true ? item.clase : '')" (click)="cambiarSelectorItem(item.id)">
-      <a [routerLink]="item.url" routerLinkActive="active">
+    <li *ngFor="let item of items" class="nav-item" [ngClass]="(item.claseActiva == true ? item.clase : '')">
+      <a [routerLink]="item.url" routerLinkActive="active" (click)="cambiarSelectorItem(item.id)">
         <img src="../../../../assets/imagenes/{{item.icono}}.png" alt="Logo {{item.icono}}" class="icono-opciones">
         <span>{{item.nombre}}</span>
       </a>

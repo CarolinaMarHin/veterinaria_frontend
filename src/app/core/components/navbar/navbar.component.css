@@ -45,4 +45,5 @@ span {
 
 .opcion-mascota-active, .opcion-servicio-active {
     background: #cdf0cc;
+    height: 45px;
 }
