@@ -27,12 +27,13 @@
         </div>
         <div class="div-input-servicio">
             <label class="required" for="fecha-compra">Fecha compra:</label>
-            <input id="fecha-compra" class="input" name="fecha-compra" type="date"/>
+            <input id="fecha-compra" class="input" name="fecha-compra" type="date" [(ngModel)]="cita.fecha"/>
             <span id="name-validation" class="error_message"></span>
         </div>
-        <input id="crear-servicio" class="input-btn-crear" type="submit" value="Crear Mascota"/>
+        <input id="crear-servicio" class="input-btn-crear" type="submit" value="Crear Servicio" (click)="registroServicio()"/>
         <br>
         <div class="alert alert-danger" *ngIf="mostrarMensajeError">Error al registrar el servicio, intente nuevamente.</div>
+        <div class="alert alert-danger" *ngIf="mostrarMensajeCitasMaximas">{{errorCitasMaximas}}</div>
         <div class="alert alert-success" *ngIf="mostrarMensaje">Registro exitoso.</div>
     </form>
     </div>

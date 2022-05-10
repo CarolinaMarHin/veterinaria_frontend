@@ -12,7 +12,6 @@ export class MascotaService {
     ) {}
 
   public crear(mascota: Mascota) {
-    console.log(`${environment.endpoint_veterinaria}/mascotas`, mascota);
     return this.httpService.doPost<Mascota, Number>(`${environment.endpoint_veterinaria}/mascotas`, mascota,
                                                 this.httpService.optsName('crear/actualizar mascota'));
   }

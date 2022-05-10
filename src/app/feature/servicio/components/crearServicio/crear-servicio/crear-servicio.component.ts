@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mascota } from 'src/app/feature/mascota/shared/model/mascota';
 import { MascotaService } from 'src/app/feature/mascota/shared/service/mascota/mascota.service';
+import { Cita } from '../../../shared/model/cita';
 import { Servicio } from '../../../shared/model/servicio';
 import { Veterinario } from '../../../shared/model/veterinario';
 import { ServicioService } from '../../../shared/service/servicio/servicio.service';
@@ -15,15 +16,14 @@ export class CrearServicioComponent implements OnInit {
   constructor(protected servicioService: ServicioService,
     protected mascotaService: MascotaService) { }
 
+  public cita: Cita = new Cita();
   public listaServicios: Servicio[] = [];
   public listaVeterinarios: Veterinario[] = [];
   public listaMascotas: Mascota[] = []
   public mostrarMensaje: Boolean = false;
   public mostrarMensajeError: Boolean = false;
-  private totalPago: number = 0;
-  private idVeterinario: number = 0;
-  private codigoMascota: number = 0;
-  private codigoServicio: number = 0;
+  public mostrarMensajeCitasMaximas: Boolean = false;
+  public errorCitasMaximas: string = ""; 
   public precioServicioString: string = "$0";
 
   ngOnInit(): void {
@@ -68,22 +68,42 @@ export class CrearServicioComponent implements OnInit {
   public actualizarServicio(id:string) {
     let servicio: Servicio = this.listaServicios.find(ser => ser.id.toString() === id.split('-')[1].trim())
     this.precioServicioString = '$' + servicio.precioServicio;
-    this.codigoServicio = servicio.id;
-    this.totalPago = servicio.precioServicio;
-    console.log("1", this.codigoServicio, this.totalPago);
+    this.cita.codigoServicio = servicio.id;
+    this.cita.totalPago = servicio.precioServicio;
   }
 
   public actualizarVeterinario(id:string) {
     let veterinario: Veterinario = this.listaVeterinarios.find(vet => vet.id.toString() === id.split('-')[1].trim());
-    this.idVeterinario = veterinario.id;
-    console.log("2", this.idVeterinario);
+    this.cita.idVeterinario = veterinario.id;
   }
 
   public actualizarMascota(id:string) {
-    let mascota: Mascota = this.listaMascotas.find(mas => mas.id.toString() === id.split('-')[1].trim())
-    this.codigoMascota = mascota.id;
-    console.log("3", this.codigoMascota);
+    let mascota: Mascota = this.listaMascotas.find(mas => mas.id.toString() === id.split('-')[1].trim());
+    this.cita.codigoMascota = mascota.id;
   }
 
-
+  public registroServicio() {
+    this.servicioService.crearCita(this.cita).subscribe(
+      (response) => {
+        if (response["valor"] > 0) {
+          this.mostrarMensaje = true;
+          this.mostrarMensajeError = false;
+        } else {
+          this.mostrarMensajeError = true;
+          this.mostrarMensaje = false;
+        }
+      },
+      error => {
+        if (error.error.nombreExcepcion === "ExcepcionValorInvalido") {
+          this.mostrarMensajeCitasMaximas = true;
+          this.mostrarMensajeError = false;
+          this.mostrarMensaje = false;
+          this.errorCitasMaximas = error.error.mensaje;
+        } else {
+          this.mostrarMensajeError = true;
+          this.mostrarMensaje = false;
+        }
+      }
+    );
+  }
 }
