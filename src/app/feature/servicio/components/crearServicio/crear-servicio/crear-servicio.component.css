@@ -2,30 +2,27 @@
     text-align: center;
 }
 
-.formulario-mascota {
+.formulario-servicio {
     display: inline-block;
 }
 
-.formulario-mascota input {
-    width: 50%;
-    margin-left: 50px;
+.formulario-servicio input {
+    width: 40%;
     font-family: cursive;
 }
 
-.formulario-mascota input:focus {
-    border: 3px solid #01a65d !important;
-    border-radius: 10px;
-    outline: none;
-}
-
-.formulario-mascota label {
-    width: 30%;
+.formulario-servicio label {
+    width: 50%;
     text-align: left;
     float: left;
     font-family: cursive;
 }
 
-.formulario-mascota .input-btn-crear {
+.formulario-servicio select {
+    width: 40%;
+}
+
+.formulario-servicio .input-btn-crear {
     width: auto;
     margin-right: 0px;
     margin-left: 0px;
@@ -35,7 +32,7 @@
     border-radius: 10px;
 }
 
-.div-input-mascota {
+.div-input-servicio {
     margin: 10px 0px;
 }
 
