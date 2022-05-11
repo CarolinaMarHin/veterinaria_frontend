@@ -4,10 +4,8 @@ export class Servicio {
     precioServicio: number;
 
     constructor(id?: number, nombreServicio?: string, precioServicio?: number) {
-        if (id) {
-            this.id = id;
-            this.nombreServicio = nombreServicio;
-            this.precioServicio = precioServicio;
-        }
+        this.id = id;
+        this.nombreServicio = nombreServicio;
+        this.precioServicio = precioServicio;
     }
 }

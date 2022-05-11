@@ -4,10 +4,8 @@ export class Veterinario {
     cedulaVeterinario: string;
 
     constructor(id?: number, nombreVeterinario?: string, cedulaVeterinario?: string) {
-        if (id) {
-            this.id = id;
-            this.nombreVeterinario = nombreVeterinario;
-            this.cedulaVeterinario = cedulaVeterinario;
-        }
+        this.id = id;
+        this.nombreVeterinario = nombreVeterinario;
+        this.cedulaVeterinario = cedulaVeterinario;
     }
 }
