@@ -1,6 +1,3 @@
-// Karma configuration file, see link for more information
-// https://karma-runner.github.io/1.0/config/configuration-file.html
-
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -32,7 +29,7 @@ module.exports = function (config) {
     htmlReporter: {
       outputFile: 'reports/unit/units.html',
 
-      // Optional 
+      // Optional
       pageTitle: 'Vida - Tests Unitarios',
       subPageTitle: 'Presentacion HTML de los test unitarios',
       dir: 'reports/html/'
@@ -47,14 +44,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['HeadlessChrome'],
-    customLaunchers: {
-        HeadlessChrome: {
-            base: 'ChromeHeadless',
-            flags: ['--no-sandbox']
-        }
-    },
-    singleRun: false,
+    browsers: ['ChromeHeadless'],
+    singleRun: true,
     restartOnFileChange: true
   });
 };
