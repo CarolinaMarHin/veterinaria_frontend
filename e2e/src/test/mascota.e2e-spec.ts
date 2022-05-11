@@ -33,7 +33,7 @@ describe('workspace-project Producto', () => {
     it('Deberia crear la mascota', () => {
         page.navigateTo();
         navBar.clickBotonProductos();
-        mascota.clickBotonCrearMascota;
+        mascota.clickBotonCrearMascota();
 
         expect(1).toBe(mascota.clickInputCrearMascota());
     });

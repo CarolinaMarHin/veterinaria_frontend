@@ -11,7 +11,7 @@ export class ServicioComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   public redireccionPagina(enlace: string) {
     window.location.href = enlace;
   }

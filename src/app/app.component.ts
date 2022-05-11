@@ -10,7 +10,7 @@ import { MenuItem } from '@core/modelo/menu-item';
 export class AppComponent {
   title = 'app-base';
   public opcionesVeterinaria: MenuItem[] = [
-    { id: "item-mascota", url: '/mascota', nombre: 'Mascotas', icono: 'mascota', clase: "opcion-mascota-active", claseActiva: false },
-    { id: "item-servicio", url: '/servicio', nombre: 'Servicios', icono: 'servicio', clase: "opcion-servicio-active", claseActiva: false }
+    { id: 'item-mascota', url: '/mascota', nombre: 'Mascotas', icono: 'mascota', clase: 'opcion-mascota-active', claseActiva: false },
+    { id: 'item-servicio', url: '/servicio', nombre: 'Servicios', icono: 'servicio', clase: 'opcion-servicio-active', claseActiva: false }
   ];
 }

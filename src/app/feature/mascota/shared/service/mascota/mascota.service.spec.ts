@@ -28,8 +28,8 @@ describe('MascotaService', () => {
 
   it('deberia listar mascotas', () => {
     const dummyMascotas = [
-      new Mascota("Guardian", "1122", "Criollo", "2020-12-12", 21), 
-      new Mascota("Titan", "2211", "Criollo", "2020-12-12", 21)
+      new Mascota('Guardian', '1122', 'Criollo', '2020-12-12', 21),
+      new Mascota('Titan', '2211', 'Criollo', '2020-12-12', 21)
     ];
     service.consultar().subscribe(mascotas => {
       expect(mascotas.length).toBe(2);
@@ -41,7 +41,7 @@ describe('MascotaService', () => {
   });
 
   it('deberia crear una mascota', () => {
-    const dummyMascota = new Mascota("Guardian", "1122", "Criollo", "2020-12-12", 21);
+    const dummyMascota = new Mascota('Guardian', '1122', 'Criollo', '2020-12-12', 21);
     service.crear(dummyMascota).subscribe((respuesta) => {
       expect(respuesta).toBeGreaterThan(0);
     });
@@ -52,8 +52,8 @@ describe('MascotaService', () => {
 
   it('deberia eliminar una mascota', () => {
     const dummyMascotas = [
-      new Mascota("Guardian", "1122", "Criollo", "2020-12-12", 21, 1), 
-      new Mascota("Titan", "2211", "Criollo", "2020-12-12", 21, 2)
+      new Mascota('Guardian', '1122', 'Criollo', '2020-12-12', 21, 1),
+      new Mascota('Titan', '2211', 'Criollo', '2020-12-12', 21, 2)
     ];
     service.eliminar(dummyMascotas[0]).subscribe((respuesta) => {
       expect(respuesta).toBeTruthy();

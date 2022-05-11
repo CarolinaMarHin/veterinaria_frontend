@@ -1,16 +1,27 @@
+import { HttpResponse } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpService } from '@core/services/http.service';
+import { environment } from 'src/environments/environment';
+import { Mascota } from '../../shared/model/mascota';
+import { MascotaService } from '../../shared/service/mascota/mascota.service';
 
 import { MascotaComponent } from './mascota.component';
 
 describe('MascotaComponent', () => {
   let component: MascotaComponent;
   let fixture: ComponentFixture<MascotaComponent>;
+  let httpMock: HttpTestingController;
+  let service: MascotaService;
+  const apiEndpointMascota = `${environment.endpoint_veterinaria}/mascotas`;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ MascotaComponent ]
-    })
-    .compileComponents();
+    const injector = TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [MascotaService, HttpService]
+    });
+    httpMock = injector.inject(HttpTestingController);
+    service = TestBed.inject(MascotaService);
   });
 
   beforeEach(() => {
@@ -22,70 +33,37 @@ describe('MascotaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
 
-/**
- * import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
-import { ProductoService } from './producto.service';
-import { environment } from 'src/environments/environment';
-import { HttpService } from 'src/app/core/services/http.service';
-import { Producto } from '../../model/producto';
-import { HttpResponse } from '@angular/common/http';
-
-describe('ProductoService', () => {
-  let httpMock: HttpTestingController;
-  let service: ProductoService;
-  const apiEndpointProductoConsulta = `${environment.endpoint_productos}/tiposFamilia`;
-  const apiEndpointProductos = `${environment.endpoint_productos}/productos`;
-
-  beforeEach(() => {
-    const injector = TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ProductoService, HttpService]
-    });
-    httpMock = injector.inject(HttpTestingController);
-    service = TestBed.inject(ProductoService);
-  });
-
-  it('should be created', () => {
-    const productService: ProductoService = TestBed.inject(ProductoService);
-    expect(productService).toBeTruthy();
-  });
-
-  it('deberia listar productos', () => {
-    const dummyProductos = [
-      new Producto('1', 'Producto 1'), new Producto('2', 'Producto 2')
+  it('deberia listar mascota', () => {
+    const dummyMascotas = [
+      new Mascota('Mascota 1', '1234', 'Criollo', '2021-12-13', 20, 1), new Mascota('Mascota 1', '5678', 'Criollo', '2021-12-13', 20, 1)
     ];
-    service.consultar().subscribe(productos => {
-      expect(productos.length).toBe(2);
-      expect(productos).toEqual(dummyProductos);
+    service.consultar().subscribe(mascotas => {
+      expect(mascotas.length).toBe(2);
+      expect(mascotas).toEqual(dummyMascotas);
     });
-    const req = httpMock.expectOne(apiEndpointProductoConsulta);
+    const req = httpMock.expectOne(apiEndpointMascota);
     expect(req.request.method).toBe('GET');
-    req.flush(dummyProductos);
+    req.flush(dummyMascotas);
   });
 
-  it('deberia crear un producto', () => {
-    const dummyProducto = new Producto('1', 'Producto 1');
-    service.guardar(dummyProducto).subscribe((respuesta) => {
-      expect(respuesta).toEqual(true);
+  it('deberia crear una mascota', () => {
+    const dummyMascota = new Mascota('Mascota 1', '1234', 'Criollo', '2021-12-13', 20);
+    service.crear(dummyMascota).subscribe((respuesta) => {
+      expect(respuesta).toEqual(1);
     });
-    const req = httpMock.expectOne(apiEndpointProductos);
+    const req = httpMock.expectOne(apiEndpointMascota);
     expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<boolean>({body: true}));
+    req.event(new HttpResponse<number>({body: 1}));
   });
 
-  it('deberia eliminar un producto', () => {
-    const dummyProducto = new Producto('1', 'Producto 1');
-    service.eliminar(dummyProducto).subscribe((respuesta) => {
+  it('deberia eliminar una mascota', () => {
+    const dummyMascota = new Mascota('Mascota 1', '1234', 'Criollo', '2021-12-13', 20, 1);
+    service.eliminar(dummyMascota).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
-    const req = httpMock.expectOne(`${apiEndpointProductos}/1`);
+    const req = httpMock.expectOne(`${apiEndpointMascota}/1`);
     expect(req.request.method).toBe('DELETE');
     req.event(new HttpResponse<boolean>({body: true}));
   });
 });
-
- */

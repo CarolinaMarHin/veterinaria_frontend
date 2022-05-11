@@ -13,15 +13,15 @@ export class CrearMascotaComponent implements OnInit {
   }
 
   public mascota: Mascota = new Mascota();
-  public mostrarMensaje: Boolean = false;
-  public mostrarMensajeError: Boolean = false;
-  
+  public mostrarMensaje = false;
+  public mostrarMensajeError = false;
+
   ngOnInit(): void {}
 
   public registroMascota() {
     this.mascotaService.crear(this.mascota).subscribe(
       (response) => {
-        if (response["valor"] > 0) {
+        if (response['valor'] > 0) {
           this.mostrarMensaje = true;
           this.mostrarMensajeError = false;
         } else {
@@ -32,7 +32,7 @@ export class CrearMascotaComponent implements OnInit {
       error => {
         this.mostrarMensajeError = true;
         this.mostrarMensaje = false;
-        console.log(error); 
+        console.log(error);
       }
     );
   }

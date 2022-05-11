@@ -16,10 +16,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  public cambiarSelectorItem (id: String) {
+  public cambiarSelectorItem(id: string) {
     this.items.forEach(item => {
       item.claseActiva = id === item.id;
-    })
+    });
   }
 
 }

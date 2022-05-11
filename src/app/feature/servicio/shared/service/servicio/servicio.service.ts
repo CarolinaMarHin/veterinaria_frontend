@@ -20,7 +20,7 @@ export class ServicioService {
   }
 
   public crearCita(cita: Cita) {
-    return this.http.doPost<Cita, Number>(`${environment.endpoint_veterinaria}/citas`, cita,
+    return this.http.doPost<Cita, number>(`${environment.endpoint_veterinaria}/citas`, cita,
                                                 this.http.optsName('crear cita'));
   }
 

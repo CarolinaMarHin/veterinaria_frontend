@@ -14,17 +14,17 @@ import { ServicioService } from '../../../shared/service/servicio/servicio.servi
 export class CrearServicioComponent implements OnInit {
 
   constructor(protected servicioService: ServicioService,
-    protected mascotaService: MascotaService) { }
+              protected mascotaService: MascotaService) { }
 
   public cita: Cita = new Cita();
   public listaServicios: Servicio[] = [];
   public listaVeterinarios: Veterinario[] = [];
-  public listaMascotas: Mascota[] = []
-  public mostrarMensaje: Boolean = false;
-  public mostrarMensajeError: Boolean = false;
-  public mostrarMensajeCitasMaximas: Boolean = false;
-  public errorCitasMaximas: string = ""; 
-  public precioServicioString: string = "$0";
+  public listaMascotas: Mascota[] = [];
+  public mostrarMensaje = false;
+  public mostrarMensajeError = false;
+  public mostrarMensajeCitasMaximas = false;
+  public errorCitasMaximas = '';
+  public precioServicioString = '$0';
 
   ngOnInit(): void {
     this.cargarInformacionMascotas();
@@ -39,7 +39,7 @@ export class CrearServicioComponent implements OnInit {
     error => {
       this.mostrarMensajeError = true;
       this.mostrarMensaje = false;
-      console.log(error); 
+      console.log(error);
     });
   }
 
@@ -50,7 +50,7 @@ export class CrearServicioComponent implements OnInit {
     error => {
       this.mostrarMensajeError = true;
       this.mostrarMensaje = false;
-      console.log(error); 
+      console.log(error);
     });
   }
 
@@ -61,31 +61,31 @@ export class CrearServicioComponent implements OnInit {
     error => {
       this.mostrarMensajeError = true;
       this.mostrarMensaje = false;
-      console.log(error); 
+      console.log(error);
     });
   }
 
-  public actualizarServicio(id:string) {
-    let servicio: Servicio = this.listaServicios.find(ser => ser.id.toString() === id.split('-')[1].trim())
+  public actualizarServicio(id: string) {
+    const servicio: Servicio = this.listaServicios.find(ser => ser.id.toString() === id.split('-')[1].trim());
     this.precioServicioString = '$' + servicio.precioServicio;
     this.cita.codigoServicio = servicio.id;
     this.cita.totalPago = servicio.precioServicio;
   }
 
-  public actualizarVeterinario(id:string) {
-    let veterinario: Veterinario = this.listaVeterinarios.find(vet => vet.id.toString() === id.split('-')[1].trim());
+  public actualizarVeterinario(id: string) {
+    const veterinario: Veterinario = this.listaVeterinarios.find(vet => vet.id.toString() === id.split('-')[1].trim());
     this.cita.idVeterinario = veterinario.id;
   }
 
-  public actualizarMascota(id:string) {
-    let mascota: Mascota = this.listaMascotas.find(mas => mas.id.toString() === id.split('-')[1].trim());
+  public actualizarMascota(id: string) {
+    const mascota: Mascota = this.listaMascotas.find(mas => mas.id.toString() === id.split('-')[1].trim());
     this.cita.codigoMascota = mascota.id;
   }
 
   public registroServicio() {
     this.servicioService.crearCita(this.cita).subscribe(
       (response) => {
-        if (response["valor"] > 0) {
+        if (response['valor'] > 0) {
           this.mostrarMensaje = true;
           this.mostrarMensajeError = false;
         } else {
@@ -94,7 +94,7 @@ export class CrearServicioComponent implements OnInit {
         }
       },
       error => {
-        if (error.error.nombreExcepcion === "ExcepcionValorInvalido") {
+        if (error.error.nombreExcepcion === 'ExcepcionValorInvalido') {
           this.mostrarMensajeCitasMaximas = true;
           this.mostrarMensajeError = false;
           this.mostrarMensaje = false;

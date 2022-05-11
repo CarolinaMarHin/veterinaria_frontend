@@ -12,12 +12,13 @@ export class MascotaService {
     ) {}
 
   public crear(mascota: Mascota) {
-    return this.httpService.doPost<Mascota, Number>(`${environment.endpoint_veterinaria}/mascotas`, mascota,
+    return this.httpService.doPost<Mascota, number>(`${environment.endpoint_veterinaria}/mascotas`, mascota,
                                                 this.httpService.optsName('crear/actualizar mascota'));
   }
 
   public consultar() {
-    return this.httpService.doGet<Mascota[]>(`${environment.endpoint_veterinaria}/mascotas`, this.httpService.optsName('consultar mascota'));
+    return this.httpService.doGet<Mascota[]>(`${environment.endpoint_veterinaria}/mascotas`,
+                                                this.httpService.optsName('consultar mascota'));
   }
 
   public actualizar(mascota: Mascota) {
@@ -26,7 +27,7 @@ export class MascotaService {
   }
 
   public eliminar(mascota: Mascota) {
-    return this.httpService.doDelete<Boolean>(`${environment.endpoint_veterinaria}/mascotas/${mascota.id}`,
+    return this.httpService.doDelete<boolean>(`${environment.endpoint_veterinaria}/mascotas/${mascota.id}`,
                                                  this.httpService.optsName('eliminar mascota'));
   }
 }
