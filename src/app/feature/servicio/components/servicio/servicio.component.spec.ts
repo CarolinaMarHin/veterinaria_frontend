@@ -10,7 +10,7 @@ import { ServicioComponent } from './servicio.component';
 describe('ServicioComponent', () => {
   let component: ServicioComponent;
   let fixture: ComponentFixture<ServicioComponent>;
-  //let service: ServicioService;
+  // let service: ServicioService;
   let router: Router;
 
   beforeEach(() => {
@@ -18,12 +18,12 @@ describe('ServicioComponent', () => {
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
       providers: [MascotaService, HttpService]
     });
-    //service = TestBed.inject(ServicioService);
+    // service = TestBed.inject(ServicioService);
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ServicioComponent);
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -31,12 +31,12 @@ describe('ServicioComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
   it('should navigate', () => {
-    const component = fixture.componentInstance;
+    const componentServicio = fixture.componentInstance;
     const navigateSpy = spyOn(router, 'navigate');
 
-    component.redireccionPagina('servicio/crear-servicio');
+    componentServicio.redireccionPagina('servicio/crear-servicio');
     expect(navigateSpy).toHaveBeenCalledWith(['servicio/crear-servicio']);
   });
 });

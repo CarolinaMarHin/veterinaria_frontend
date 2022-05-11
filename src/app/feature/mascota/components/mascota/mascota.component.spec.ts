@@ -29,7 +29,7 @@ describe('MascotaComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MascotaComponent);
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -62,10 +62,10 @@ describe('MascotaComponent', () => {
   });
 
   it('should navigate', () => {
-    const component = fixture.componentInstance;
+    const componentMascota = fixture.componentInstance;
     const navigateSpy = spyOn(router, 'navigate');
 
-    component.redireccionPagina('mascota/crear-mascota');
+    componentMascota.redireccionPagina('mascota/crear-mascota');
     expect(navigateSpy).toHaveBeenCalledWith(['mascota/crear-mascota']);
   });
 });
