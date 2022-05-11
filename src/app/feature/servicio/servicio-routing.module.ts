@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CrearServicioComponent } from './components/crearServicio/crear-servicio/crear-servicio.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ServicioComponent,
-    children: []
+    component: ServicioComponent
+  },
+  {
+    path: 'crear-servicio',
+    component: CrearServicioComponent
   }
 ];
 

@@ -6,25 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MascotaComponent } from './feature/mascota/components/mascota/mascota.component';
-import { CrearMascotaComponent } from './feature/mascota/components/crearMascota/crear-mascota/crear-mascota.component';
-import { MascotaService } from './feature/mascota/shared/service/mascota/mascota.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ServicioComponent } from './feature/servicio/components/servicio/servicio.component';
+import { MascotaModule } from './feature/mascota/mascota.module';
+import { ServicioModule } from './feature/servicio/servicio.module';
+import { MascotaService } from './feature/mascota/shared/service/mascota/mascota.service';
 import { ServicioService } from './feature/servicio/shared/service/servicio/servicio.service';
-import { CrearServicioComponent } from './feature/servicio/components/crearServicio/crear-servicio/crear-servicio.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MascotaComponent,
-    CrearMascotaComponent,
-    ServicioComponent,
-    CrearServicioComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MascotaModule,
+    ServicioModule,
     CoreModule,
     FormsModule,
     HttpClientModule,
