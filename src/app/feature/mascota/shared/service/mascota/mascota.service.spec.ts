@@ -61,4 +61,14 @@ describe('MascotaService', () => {
     expect(req.request.method).toBe('DELETE');
     req.event(new HttpResponse<boolean>({body: true}));
   });
+
+  it('deberia actualizar una mascota', () => {
+    const dummyMascota = new Mascota('Guardian actualizado', '1122', 'Criollo', '2020-12-12', 21, 1);
+    service.actualizar(dummyMascota).subscribe((respuesta) => {
+      expect(respuesta).toBeTruthy();
+    });
+    const req = httpMock.expectOne(`${apiEndpointMascotas}/1`);
+    expect(req.request.method).toBe('POST');
+    req.event(new HttpResponse<boolean>({body: true}));
+  });
 });

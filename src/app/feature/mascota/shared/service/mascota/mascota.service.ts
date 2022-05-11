@@ -22,7 +22,7 @@ export class MascotaService {
   }
 
   public actualizar(mascota: Mascota) {
-    return this.httpService.doPost<Mascota, boolean>(`${environment.endpoint_veterinaria}/mascota`, mascota,
+    return this.httpService.doPost<Mascota, boolean>(`${environment.endpoint_veterinaria}/mascotas/${mascota.id}`, mascota,
                                                 this.httpService.optsName('crear/actualizar mascota'));
   }
 
