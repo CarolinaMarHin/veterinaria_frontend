@@ -9,7 +9,6 @@ import { Mascota } from '../../model/mascota';
 describe('MascotaService', () => {
   let httpMock: HttpTestingController;
   let service: MascotaService;
-  const apiEndpointMascotaConsulta = `${environment.endpoint_veterinaria}/mascotas`;
   const apiEndpointMascotas = `${environment.endpoint_veterinaria}/mascotas`;
 
   beforeEach(() => {
@@ -35,7 +34,7 @@ describe('MascotaService', () => {
       expect(mascotas.length).toBe(2);
       expect(mascotas).toEqual(dummyMascotas);
     });
-    const req = httpMock.expectOne(apiEndpointMascotaConsulta);
+    const req = httpMock.expectOne(apiEndpointMascotas);
     expect(req.request.method).toBe('GET');
     req.flush(dummyMascotas);
   });
