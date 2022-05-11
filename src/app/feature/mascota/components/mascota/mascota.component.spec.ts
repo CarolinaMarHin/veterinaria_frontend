@@ -1,6 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Mascota } from '../../shared/model/mascota';
@@ -13,11 +15,12 @@ describe('MascotaComponent', () => {
   let fixture: ComponentFixture<MascotaComponent>;
   let httpMock: HttpTestingController;
   let service: MascotaService;
+  let router: Router;
   const apiEndpointMascota = `${environment.endpoint_veterinaria}/mascotas`;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     const injector = TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
       providers: [MascotaService, HttpService]
     });
     httpMock = injector.inject(HttpTestingController);
@@ -26,6 +29,7 @@ describe('MascotaComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MascotaComponent);
+    router = TestBed.get(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -47,16 +51,6 @@ describe('MascotaComponent', () => {
     req.flush(dummyMascotas);
   });
 
-  it('deberia crear una mascota', () => {
-    const dummyMascota = new Mascota('Mascota 1', '1234', 'Criollo', '2021-12-13', 20);
-    service.crear(dummyMascota).subscribe((respuesta) => {
-      expect(respuesta).toEqual(1);
-    });
-    const req = httpMock.expectOne(apiEndpointMascota);
-    expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<number>({body: 1}));
-  });
-
   it('deberia eliminar una mascota', () => {
     const dummyMascota = new Mascota('Mascota 1', '1234', 'Criollo', '2021-12-13', 20, 1);
     service.eliminar(dummyMascota).subscribe((respuesta) => {
@@ -64,6 +58,14 @@ describe('MascotaComponent', () => {
     });
     const req = httpMock.expectOne(`${apiEndpointMascota}/1`);
     expect(req.request.method).toBe('DELETE');
-    req.event(new HttpResponse<boolean>({body: true}));
+    req.event(new HttpResponse<boolean>({ body: true }));
+  });
+
+  it('should navigate', () => {
+    const component = fixture.componentInstance;
+    const navigateSpy = spyOn(router, 'navigate');
+
+    component.redireccionPagina('mascota/crear-mascota');
+    expect(navigateSpy).toHaveBeenCalledWith(['mascota/crear-mascota']);
   });
 });
