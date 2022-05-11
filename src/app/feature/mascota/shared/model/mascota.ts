@@ -16,12 +16,6 @@ export class Mascota {
             this.raza = raza;
             this.fechaNacimientoMascota = fechaNacimientoMascota;
             this.peso = peso;
-        } else if (nombreMascota) {
-            this.nombreMascota = nombreMascota;
-            this.codigoMascota = codigoMascota;
-            this.raza = raza;
-            this.fechaNacimientoMascota = fechaNacimientoMascota;
-            this.peso = peso;
         }
     }
 }
