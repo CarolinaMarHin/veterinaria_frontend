@@ -68,4 +68,11 @@ describe('MascotaComponent', () => {
     componentMascota.redireccionPagina('mascota/crear-mascota');
     expect(navigateSpy).toHaveBeenCalledWith(['mascota/crear-mascota']);
   });
+  it('should navigate', () => {
+    const componentMascota = fixture.componentInstance;
+    const navigateSpy = spyOn(router, 'navigate');
+
+    componentMascota.redireccionPagina('mascota/buscar-mascota');
+    expect(navigateSpy).toHaveBeenCalledWith(['mascota/buscar-mascota']);
+  });
 });

@@ -1,0 +1,26 @@
+
+<div class="div-input-servicio">
+    <label for="cedula">Cedula veterinario:</label>
+    <input id="cedula" class="input" name="cedula" type="text" [(ngModel)]="cedulaVeterinaria"/>
+    <input id="buscar-cita" class="input-btn-crear" type="submit" value="Buscar citas" (click)="buscarCitasVeterinario()"/>
+</div>
+
+<p *ngIf="mostrarResultado">Citas del veterinario {{veterinario.nombreVeterinario}}</p>
+<table *ngIf="mostrarResultado" style="width:100%">
+    <tr>
+      <th>Id</th>
+      <th>Nombre Veterinario</th>
+      <th>Nombre Mascota</th>
+      <th>Nombre Servicio</th>
+      <th>Total Pago</th>
+      <th>Fecha</th>
+    </tr>
+    <tr *ngFor="let cita of listaCitasVeterinario">
+      <th>{{cita.id}}</th>
+      <th>{{cita.nombreVeterinario}}</th>
+      <th>{{cita.nombreMascota}}</th>
+      <th>{{cita.nombreServicio}}</th>
+      <th>{{cita.totalPago}}</th>
+      <th>{{cita.fecha}}</th>
+    </tr>
+  </table>

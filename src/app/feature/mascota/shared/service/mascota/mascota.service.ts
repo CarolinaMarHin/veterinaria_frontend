@@ -28,6 +28,11 @@ export class MascotaService {
                                                 this.httpService.optsName('consultar mascota por codigo'));
   }
 
+  public consultarPorId(idMascota: string) {
+    return this.httpService.doGet<Mascota>(`${environment.endpoint_veterinaria}/mascotas/obtenerId/${idMascota}`,
+                                                this.httpService.optsName('consultar mascota por id'));
+  }
+
   public actualizar(mascota: Mascota) {
     return this.http.put<boolean>(`${environment.endpoint_veterinaria}/mascotas/${mascota.id}`, mascota,
                                                 this.httpService.optsName('crear/actualizar mascota'));

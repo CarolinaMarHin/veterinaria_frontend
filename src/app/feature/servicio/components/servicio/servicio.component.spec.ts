@@ -39,4 +39,12 @@ describe('ServicioComponent', () => {
     componentServicio.redireccionPagina('servicio/crear-servicio');
     expect(navigateSpy).toHaveBeenCalledWith(['servicio/crear-servicio']);
   });
+
+  it('should navigate', () => {
+    const componentServicio = fixture.componentInstance;
+    const navigateSpy = spyOn(router, 'navigate');
+
+    componentServicio.redireccionPagina('servicio/buscar-servicio');
+    expect(navigateSpy).toHaveBeenCalledWith(['servicio/buscar-servicio']);
+  });
 });
