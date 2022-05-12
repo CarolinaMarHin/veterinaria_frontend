@@ -52,7 +52,7 @@ describe('BuscarMascotaComponent', () => {
       expect(respuesta).toEqual(true);
     });
     const req = httpMock.expectOne(`${apiEndpointMascota}/1`);
-    expect(req.request.method).toBe('POST');
+    expect(req.request.method).toBe('PUT');
     req.event(new HttpResponse<boolean>({ body: true }));
   });
 });

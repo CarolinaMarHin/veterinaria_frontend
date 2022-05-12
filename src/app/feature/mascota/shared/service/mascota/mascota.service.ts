@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Mascota } from '../../model/mascota';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable()
 export class MascotaService {
 
   constructor(
-    protected httpService: HttpService
+    protected httpService: HttpService,
+    protected http: HttpClient
     ) {}
 
   public crear(mascota: Mascota) {
@@ -27,7 +29,7 @@ export class MascotaService {
   }
 
   public actualizar(mascota: Mascota) {
-    return this.httpService.doPost<Mascota, boolean>(`${environment.endpoint_veterinaria}/mascotas/${mascota.id}`, mascota,
+    return this.http.put<boolean>(`${environment.endpoint_veterinaria}/mascotas/${mascota.id}`, mascota,
                                                 this.httpService.optsName('crear/actualizar mascota'));
   }
 

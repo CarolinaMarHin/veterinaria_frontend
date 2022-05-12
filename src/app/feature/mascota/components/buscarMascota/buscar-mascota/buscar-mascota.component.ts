@@ -13,25 +13,33 @@ export class BuscarMascotaComponent implements OnInit {
 
   public errorBuscarActualizarEliminar = '';
   public exitoBuscarActualizarEliminar  = '';
-
+  public actualizacion = false;
   public mascota: Mascota = new Mascota('', '', '', '', 0, 0);
   public mostrarMensaje = false;
   public mostrarMensajeError = false;
-  public mostrarBotonActualizarEliminar = false;
+  public mostrarBotonActualizar = false;
+  public mostrarBotonEliminar = false;
+  public mostrarBotonGuardar = false;
 
   ngOnInit(): void {}
   public buscarMascota(){
+    this.actualizacion = false;
     this.mascotaService.consultarPorCodigo(this.mascota.codigoMascota).subscribe(mascota => {
       this.mascota = mascota;
       this.mostrarMensajeError = false;
       this.mostrarMensaje = true;
-      this.mostrarBotonActualizarEliminar = true;
+      this.mostrarBotonActualizar = true;
+      this.mostrarBotonEliminar = true;
+      this.mostrarBotonGuardar = false;
       this.exitoBuscarActualizarEliminar = 'Busqueda exitosa.';
     },
     error => {
       this.mostrarMensajeError = true;
       this.mostrarMensaje = false;
-      this.mostrarBotonActualizarEliminar = false;
+      this.mostrarBotonActualizar = false;
+      this.mostrarBotonEliminar = false;
+      this.mostrarBotonGuardar = false;
+      this.actualizacion = false;
       this.errorBuscarActualizarEliminar = 'Error al buscar la mascota, intente nuevamente con un código valido.';
       console.log(error);
     });
@@ -43,7 +51,10 @@ export class BuscarMascotaComponent implements OnInit {
       this.exitoBuscarActualizarEliminar = 'Se elimino correctamente la mascota';
       this.mostrarMensajeError = false;
       this.mostrarMensaje = true;
-      this.mostrarBotonActualizarEliminar = false;
+      this.mostrarBotonActualizar = false;
+      this.mostrarBotonEliminar = false;
+      this.mostrarBotonGuardar = false;
+      this.actualizacion = false;
       console.log(respuesta);
     },
     error => {
@@ -51,24 +62,39 @@ export class BuscarMascotaComponent implements OnInit {
       this.errorBuscarActualizarEliminar = 'Error al eliminar la mascota. Validar que no cuente con citas asignadas.';
       this.mostrarMensajeError = true;
       this.mostrarMensaje = false;
-      this.mostrarBotonActualizarEliminar = false;
+      this.mostrarBotonActualizar = false;
+      this.mostrarBotonEliminar = false;
+      this.mostrarBotonGuardar = false;
+      this.actualizacion = false;
     });
   }
 
   public actualizarMascota() {
+    this.actualizacion = true;
+    this.mostrarBotonActualizar = false;
+    this.mostrarBotonGuardar = true;
+  }
+
+  public guardarActualizacion(){
     this.mascotaService.actualizar(this.mascota).subscribe(respuesta => {
-      this.exitoBuscarActualizarEliminar = 'Se actualizo correctamente la mascota';
       this.mostrarMensajeError = false;
       this.mostrarMensaje = true;
-      this.mostrarBotonActualizarEliminar = true;
+      this.mostrarBotonActualizar = true;
+      this.mostrarBotonEliminar = true;
+      this.mostrarBotonGuardar = true;
       this.buscarMascota();
+      this.exitoBuscarActualizarEliminar = 'Se actualizo correctamente la mascota';
+      console.log(respuesta);
     },
     error => {
       console.log('respuesta', error);
       this.errorBuscarActualizarEliminar = 'Ocurrio un error actualizando la mascota.';
       this.mostrarMensajeError = true;
       this.mostrarMensaje = false;
-      this.mostrarBotonActualizarEliminar = true;
+      this.mostrarBotonActualizar = false;
+      this.mostrarBotonEliminar = false;
+      this.mostrarBotonGuardar = false;
+      this.actualizacion = false;
     });
   }
 }

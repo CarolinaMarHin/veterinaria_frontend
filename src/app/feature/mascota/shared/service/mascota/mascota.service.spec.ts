@@ -68,7 +68,7 @@ describe('MascotaService', () => {
       expect(respuesta).toBeTruthy();
     });
     const req = httpMock.expectOne(`${apiEndpointMascotas}/1`);
-    expect(req.request.method).toBe('POST');
+    expect(req.request.method).toBe('PUT');
     req.event(new HttpResponse<boolean>({body: true}));
   });
 });
