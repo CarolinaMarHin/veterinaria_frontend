@@ -21,8 +21,10 @@
             <input id="fecha-nacimiento" class="input" name="fecha-nacimiento" type="date" [(ngModel)]="mascota.fechaNacimientoMascota" disabled/>
         </div>
         <input id="buscar-mascota" class="input-btn-crear" type="submit" value="Buscar Mascota" (click)="buscarMascota()"/>
+        <input id="actualizar-mascota" *ngIf="mostrarBotonActualizarEliminar" class="input-btn-crear" type="submit" value="Actualizar Mascota" (click)="actualizarMascota()"/>
+        <input id="eliminar-mascota" *ngIf="mostrarBotonActualizarEliminar" class="input-btn-crear" type="submit" value="Eliminar Mascota" (click)="eliminarMascota()"/>
         <br>
-        <div class="alert alert-danger" *ngIf="this.mostrarMensajeError">Error al buscar la mascota, intente nuevamente con un código valido.</div>
-        <div class="alert alert-success" *ngIf="this.mostrarMensaje">Busqueda exitosa.</div>
+        <div class="alert alert-danger" *ngIf="this.mostrarMensajeError">{{errorBuscarActualizarEliminar}}</div>
+        <div class="alert alert-success" *ngIf="this.mostrarMensaje">{{exitoBuscarActualizarEliminar}}</div>
     </form>
     </div>
