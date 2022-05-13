@@ -26,6 +26,7 @@ export class BuscarServicioComponent implements OnInit {
       this.listaVeterinarios = response;
       this.mostrarMensajeError = false;
       this.cargarListaVeterinarios = true;
+      this.cargarListaCitasVeterinarios = false;
     },
     error => {
       this.mostrarMensajeError = true;
