@@ -1,7 +1,6 @@
 <div class="contenedor-menu">
     <button id="listar-veterinarios" class="btn-menu" (click)="consultarVeterinarios()">Veterinarios</button>
-    <button id="listar-citas" class="btn-menu" (click)="listarCitasVeterinario()">Citas</button>
-    <button id="facturas-mascota" class="btn-menu">Facturas por mascota</button>
+    <button id="listar-citas" class="btn-menu" (click)="listarCitasVeterinario()">Servicios</button>
 </div>
 <app-lista-veterinarios *ngIf="cargarListaVeterinarios" [listaVeterinarios]='listaVeterinarios'></app-lista-veterinarios>
 <app-lista-citas *ngIf="cargarListaCitasVeterinarios"></app-lista-citas>
