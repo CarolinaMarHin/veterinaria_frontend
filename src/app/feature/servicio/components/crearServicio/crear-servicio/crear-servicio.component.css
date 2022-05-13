@@ -20,7 +20,7 @@
 }
 
 .formulario-servicio select {
-    width: 40%;
+    width: 50%;
 }
 
 .formulario-servicio .input-btn-crear {
@@ -33,9 +33,19 @@
     border-radius: 10px;
 }
 
+.formulario-servicio .campo-input {
+    width: 50%;
+    margin-left: 0px;
+}
+
+.formulario-servicio .campo-input {
+    width: 50%;
+    margin-left: 0px;
+}
+
 .div-input-servicio {
     margin: 10px 0px;
-    width: 65%;
+    width: 100%;
 }
 
 .alert {
@@ -65,17 +75,16 @@ span {
         font-size: 15px;
     }
 
-    .formulario-servicio input {
-        width: 50%;
-        margin-left: 0px;
+    .formulario-servicio select {
+        width: 40%;
     }
 
-    .formulario-servicio input.campo-input {
+    .formulario-servicio .campo-input {
         width: 40%;
         margin-left: 0px;
     }
 
-    .formulario-servicio label.campo-input {
+    .formulario-servicio .campo-label {
         width: 60%;
         margin-left: 0px;
     }
