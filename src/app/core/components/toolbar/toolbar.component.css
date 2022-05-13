@@ -40,3 +40,9 @@ span {
     text-align: none !important;
     text-align-last: none !important;
 }
+
+@media screen and (max-width: 998px) {
+    :host {
+        width: -webkit-fill-available;
+    }
+}

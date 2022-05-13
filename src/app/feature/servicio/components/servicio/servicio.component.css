@@ -11,10 +11,11 @@
 
 .btn-menu {
     position: relative;
-    width: 50%;
+    width: 35%;
     border-radius: 10px;
     background: #cdf0cc;
     border: 3px solid #01a65d;
+    margin: 5px;
 }
 
 .img-btn {
@@ -22,6 +23,12 @@
     padding: 10px;
 }
 
+span {
+    font-size: 18px;
+    color: #000;
+    font-family: cursive;
+    display: block;
+}
 
 @media screen and (max-width: 998px) {
     .contenedor-menu {
@@ -29,6 +36,10 @@
         width: 75%;
         height: auto;
         margin: 20px;
+    }
+
+    .btn-menu {
+        width: 50%;
     }
   }
 

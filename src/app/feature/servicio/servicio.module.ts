@@ -6,7 +6,6 @@ import { ServicioService } from './shared/service/servicio/servicio.service';
 import { CrearServicioComponent } from './components/crearServicio/crear-servicio/crear-servicio.component';
 import { BuscarServicioComponent } from './components/buscarServicio/buscar-servicio/buscar-servicio.component';
 import { ListaCitasComponent } from './components/listaCitas/lista-citas/lista-citas.component';
-import { ListaFacturasComponent } from './components/listaFacturas/lista-facturas/lista-facturas.component';
 import { ListaVeterinariosComponent } from './components/listaVeterinarios/lista-veterinarios/lista-veterinarios.component';
 
 
@@ -15,7 +14,6 @@ import { ListaVeterinariosComponent } from './components/listaVeterinarios/lista
     CrearServicioComponent,
     BuscarServicioComponent,
     ListaCitasComponent,
-    ListaFacturasComponent,
     ListaVeterinariosComponent
   ],
   imports: [
