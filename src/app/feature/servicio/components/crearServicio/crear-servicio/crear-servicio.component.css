@@ -4,6 +4,7 @@
 
 .formulario-servicio {
     display: inline-block;
+    text-align: -webkit-center;
 }
 
 .formulario-servicio input {
@@ -34,8 +35,48 @@
 
 .div-input-servicio {
     margin: 10px 0px;
+    width: 65%;
 }
 
 .alert {
     margin: 15px;
+}
+
+span {
+    font-size: 18px;
+    color: #000;
+    font-family: cursive;
+    display: block;
+}
+
+@media screen and (max-width: 998px) {
+
+    .formulario-servicio {
+        padding: 10px;
+    }
+
+    .div-input-servicio {
+        margin: 5px 0px;
+        width: 90%;
+    }
+
+    .formulario-servicio label {
+        width: 60%;
+        font-size: 15px;
+    }
+
+    .formulario-servicio input {
+        width: 50%;
+        margin-left: 0px;
+    }
+
+    .formulario-servicio input.campo-input {
+        width: 40%;
+        margin-left: 0px;
+    }
+
+    .formulario-servicio label.campo-input {
+        width: 60%;
+        margin-left: 0px;
+    }
 }

@@ -1,4 +1,5 @@
 <div class="contenedor-formulario">
+    <span>Crear servicio</span>
     <form id="registro-servicio" class="formulario-servicio">
         <div class="div-input-servicio">
             <label for="servicios">Selecciona el servicio</label>
@@ -22,12 +23,12 @@
             </select>
         </div>
         <div class="div-input-servicio">
-            <label for="Precio">Precio:</label>
-            <input id="precio" class="input" name="precio" type="text" value="{{precioServicioString}}" disabled/>
+            <label for="Precio" class="campo-input">Precio:</label>
+            <input id="precio" class="campo-input" name="precio" type="text" value="{{precioServicioString}}" disabled/>
         </div>
         <div class="div-input-servicio">
-            <label class="required" for="fecha-compra">Fecha compra:</label>
-            <input id="fecha-compra" class="input" name="fecha-compra" type="date" [(ngModel)]="cita.fecha"/>
+            <label class="campo-input" for="fecha-compra">Fecha compra:</label>
+            <input id="fecha-compra" class="campo-input" name="fecha-compra" type="date" [(ngModel)]="cita.fecha"/>
             <span id="name-validation" class="error_message"></span>
         </div>
         <input id="crear-servicio" class="input-btn-crear" type="submit" value="Crear Servicio" (click)="registroServicio()"/>
