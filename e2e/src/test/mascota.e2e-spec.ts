@@ -21,7 +21,7 @@ describe('workspace-project Producto', () => {
         const RAZA_MASCOTA = 'Husky';
 
         page.navigateTo();
-        navBar.clickBotonProductos();
+        navBar.clickBotonMascota();
         mascota.clickBotonCrearMascota();
         mascota.ingresarNombre(NOMBRE_MASCOTA);
         mascota.ingresarCodigo(CODIGO_MASCOTA);
@@ -32,7 +32,7 @@ describe('workspace-project Producto', () => {
 
     it('Deberia crear la mascota', () => {
         page.navigateTo();
-        navBar.clickBotonProductos();
+        navBar.clickBotonMascota();
         mascota.clickBotonCrearMascota();
 
         expect(1).toBe(mascota.clickInputCrearMascota());
