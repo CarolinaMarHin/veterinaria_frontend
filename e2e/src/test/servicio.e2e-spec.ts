@@ -27,7 +27,7 @@ describe('workspace-project Producto', () => {
         servicio.ingresarFecha(FECHA);
     });
 
-    it('Deberia crear la mascota', () => {
+    it('Deberia crear el servicio', () => {
         page.navigateTo();
         navBar.clickBotonServicio();
         servicio.clickBotonCrearServicio();
