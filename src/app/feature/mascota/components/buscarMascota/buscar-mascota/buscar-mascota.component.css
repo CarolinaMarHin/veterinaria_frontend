@@ -46,18 +46,33 @@
     margin: 15px;
 }
 
+span {
+    font-size: 18px;
+    color: #000;
+    font-family: cursive;
+    display: block;
+}
+
 @media screen and (max-width: 998px) {
 
     .formulario-mascota {
         padding: 10px;
+        width: 100%;
     }
 
     .div-input-mascota {
-        margin: 5px 0px;
+        margin: 0px;
+        width: 90%;
     }
 
     .formulario-mascota label {
-        width: 35%;
-        font-size: 16px;
+        width: 45%;
+        font-size: 15px;
+        float: none;
+    }
+
+    .formulario-mascota input {
+        width: 45%;
+        margin: 0px;
     }
 }
