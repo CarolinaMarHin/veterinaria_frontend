@@ -1,9 +1,10 @@
 
 <div class="div-input-servicio">
     <label for="cedula">Cedula veterinario:</label>
-    <input id="cedula" class="input" name="cedula" type="text" [(ngModel)]="cedulaVeterinaria"/>
-    <input id="buscar-cita" class="input-btn-crear" type="submit" value="Buscar citas Veterinario" (click)="buscarCitasVeterinario(true)"/>
-    <input id="buscar-cita" class="input-btn-crear" type="submit" value="Buscar todas las citas" (click)="buscarCitasVeterinario(false)"/>
+    <input id="cedula" class="input" name="Codigo busqueda" type="text" [(ngModel)]="codigoBusqueda"/>
+    <input id="buscar-cita" class="input-btn-crear" type="submit" value="Buscar citas veterinario" (click)="buscarCitas(1)"/>
+    <input id="buscar-cita" class="input-btn-crear" type="submit" value="Buscar cita mascota" (click)="buscarCitas(2)"/>
+    <input id="buscar-cita" class="input-btn-crear" type="submit" value="Buscar todas las citas" (click)="buscarCitas(3)"/>
 </div>
 
 <p *ngIf="mostrarResultado">Citas del veterinario</p>
@@ -17,7 +18,7 @@
       <th id="titulo-pago">Total Pago</th>
       <th id="titulo-fecha">Fecha</th>
     </tr>
-    <tr *ngFor="let cita of listaCitasVeterinario">
+    <tr *ngFor="let cita of listaCitas">
       <th id="cita-id-{{cita.id}}">{{cita.id}}</th>
       <th id="cita-veterinario-{{cita.id}}">{{cita.nombreVeterinario}}</th>
       <th id="cita-mascota-{{cita.id}}">{{cita.nombreMascota}}</th>
