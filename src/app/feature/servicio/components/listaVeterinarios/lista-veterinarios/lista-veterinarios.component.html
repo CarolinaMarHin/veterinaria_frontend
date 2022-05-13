@@ -1,13 +1,14 @@
 <p>Lista de veterinarios!</p>
-<table style="width:100%">
+<table>
+  <caption>Lista de Veterinarios</caption>
   <tr>
-    <th>Id</th>
-    <th>Cedula Veterinario</th>
-    <th>Nombre Veterinario</th>
+    <th id="veterinario-id">Id</th>
+    <th id="veterinario-cedula">Cedula Veterinario</th>
+    <th id="veterinario-nombre">Nombre Veterinario</th>
   </tr>
   <tr *ngFor="let veterinario of listaVeterinarios">
-    <td>{{veterinario.id}}</td>
-    <td>{{veterinario.cedulaVeterinario}}</td>
-    <td>{{veterinario.nombreVeterinario}}</td>
+    <td id="veterinario-id-{{veterinario.id}}">{{veterinario.id}}</td>
+    <td id="veterinario-cedula-{{veterinario.id}}">{{veterinario.cedulaVeterinario}}</td>
+    <td id="veterinario-nombre-{{veterinario.id}}">{{veterinario.nombreVeterinario}}</td>
   </tr>
 </table>

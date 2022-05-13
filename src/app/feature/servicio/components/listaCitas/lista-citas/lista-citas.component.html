@@ -6,21 +6,22 @@
 </div>
 
 <p *ngIf="mostrarResultado">Citas del veterinario {{veterinario.nombreVeterinario}}</p>
-<table *ngIf="mostrarResultado" style="width:100%">
+<table *ngIf="mostrarResultado">
+  <caption>Lista de citas para el veterinario {{veterinario.nombreVeterinario}}</caption>
     <tr>
-      <th>Id</th>
-      <th>Nombre Veterinario</th>
-      <th>Nombre Mascota</th>
-      <th>Nombre Servicio</th>
-      <th>Total Pago</th>
-      <th>Fecha</th>
+      <th id="titulo-id">Id</th>
+      <th id="titulo-veterinario">Nombre Veterinario</th>
+      <th id="titulo-mascota">Nombre Mascota</th>
+      <th id="titulo-servicio">Nombre Servicio</th>
+      <th id="titulo-pago">Total Pago</th>
+      <th id="titulo-fecha">Fecha</th>
     </tr>
     <tr *ngFor="let cita of listaCitasVeterinario">
-      <th>{{cita.id}}</th>
-      <th>{{cita.nombreVeterinario}}</th>
-      <th>{{cita.nombreMascota}}</th>
-      <th>{{cita.nombreServicio}}</th>
-      <th>{{cita.totalPago}}</th>
-      <th>{{cita.fecha}}</th>
+      <th id="cita-id-{{cita.id}}">{{cita.id}}</th>
+      <th id="cita-veterinario-{{cita.id}}">{{cita.nombreVeterinario}}</th>
+      <th id="cita-mascota-{{cita.id}}">{{cita.nombreMascota}}</th>
+      <th id="cita-servicio-{{cita.id}}">{{cita.nombreServicio}}</th>
+      <th id="cita-pago-{{cita.id}}">{{cita.totalPago}}</th>
+      <th id="cita-fecha-{{cita.id}}">{{cita.fecha}}</th>
     </tr>
   </table>
