@@ -35,6 +35,28 @@ span {
 }
 
 
+.input-btn {
+    position: relative;
+    width: 20%;
+    border-radius: 10px;
+    background: #cdf0cc;
+    border: 3px solid #01a65d;
+    margin: 5px;
+    display: block;
+}
+
+.div-input-servicio .input-codigo {
+    width: 15%;
+    margin-left: 10px;
+    font-family: cursive;
+}
+
+.div-input-servicio .input-codigo:focus {
+    border: 3px solid #01a65d !important;
+    border-radius: 10px;
+    outline: none;
+}
+
 @media screen and (max-width: 998px) {
     table {
         width: 80%;
