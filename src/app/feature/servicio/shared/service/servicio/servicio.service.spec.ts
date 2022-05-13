@@ -4,6 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Cita } from '../../model/cita';
+import { CitaDetalle } from '../../model/citaDetalle';
 import { Servicio } from '../../model/servicio';
 import { Veterinario } from '../../model/veterinario';
 import { ServicioService } from './servicio.service';
@@ -65,5 +66,17 @@ describe('ServicioService', () => {
         const req = httpMock.expectOne(`${apiEndpointCita}`);
         expect(req.request.method).toBe('POST');
         req.event(new HttpResponse<number>({ body: 1 }));
+    });
+
+    it('deberia consultar las citas', () => {
+        const dummyCitas = [new CitaDetalle(1, 'Mascota 1', 'Veterinaria 1', 'Servicio 1', 25000, '2022-01-12'),
+                        new CitaDetalle(2, 'Mascota 2', 'Veterinaria 2', 'Servicio 2', 35000, '2022-01-02')];
+        service.consultarCitas().subscribe(citas => {
+            expect(citas.length).toBe(2);
+            expect(citas).toBe(dummyCitas);
+        });
+        const req = httpMock.expectOne(`${apiEndpointCita}`);
+        expect(req.request.method).toBe('GET');
+        req.flush(dummyCitas);
     });
 });
