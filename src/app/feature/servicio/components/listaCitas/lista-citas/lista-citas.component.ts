@@ -35,14 +35,25 @@ export class ListaCitasComponent implements OnInit {
     });
   }
 
-  public buscarCitasVeterinario() {
-    this.veterinario = this.listaVeterinarios.filter(veterinario => veterinario.cedulaVeterinario === this.cedulaVeterinaria)[0];
-    this.consultarCitasVeterinario();
+  public buscarCitasVeterinario(busquedaPorVeterinario: boolean) {
+    if (busquedaPorVeterinario) {
+      this.veterinario = this.listaVeterinarios.filter(veterinario => veterinario.cedulaVeterinario === this.cedulaVeterinaria)[0];
+      this.consultarCitasVeterinario();
+    } else {
+      this.consultarCitas();
+    }
   }
 
   public consultarCitasVeterinario() {
     this.servicioService.consultarCitas().subscribe(citas => {
       this.listaCitasVeterinario = citas.filter(cita => cita.nombreVeterinario.trim() === this.veterinario.nombreVeterinario);
+    });
+    this.mostrarResultado = true;
+  }
+
+  public consultarCitas() {
+    this.servicioService.consultarCitas().subscribe(citas => {
+      this.listaCitasVeterinario = citas;
     });
     this.mostrarResultado = true;
   }
