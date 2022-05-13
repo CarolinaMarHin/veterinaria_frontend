@@ -1,29 +1,30 @@
-
 <div class="div-input-servicio">
-    <label for="codigo_busqueda">Codigo busqueda:</label>
-    <input id="cedula" class="input-codigo" name="codigo_busqueda" type="text" [(ngModel)]="codigoBusqueda"/>
-    <input id="buscar-cita" class="input-btn" type="submit" value="Buscar citas veterinario" (click)="buscarCitas(1)"/>
-    <input id="buscar-cita" class="input-btn" type="submit" value="Buscar cita mascota" (click)="buscarCitas(2)"/>
-    <input id="buscar-cita" class="input-btn" type="submit" value="Buscar todas las citas" (click)="buscarCitas(3)"/>
+  <label for="codigo_busqueda">Codigo busqueda:</label>
+  <input id="cedula" class="input-codigo" name="codigo_busqueda" type="text" [(ngModel)]="codigoBusqueda" />
+  <input id="buscar-cita" class="input-btn" type="submit" value="Buscar citas veterinario" (click)="buscarCitas(1)" />
+  <input id="buscar-cita" class="input-btn" type="submit" value="Buscar cita mascota" (click)="buscarCitas(2)" />
+  <input id="buscar-cita" class="input-btn" type="submit" value="Buscar todas las citas" (click)="buscarCitas(3)" />
 </div>
 
-<p *ngIf="mostrarResultado">Citas del veterinario</p>
+<br>
+<span *ngIf="mostrarResultado">Citas del veterinario</span>
+<br>
 <table *ngIf="mostrarResultado">
   <caption>Lista de citas para el veterinario</caption>
-    <tr>
-      <th id="titulo-id">Id</th>
-      <th id="titulo-veterinario">Nombre Veterinario</th>
-      <th id="titulo-mascota">Nombre Mascota</th>
-      <th id="titulo-servicio">Nombre Servicio</th>
-      <th id="titulo-pago">Total Pago</th>
-      <th id="titulo-fecha">Fecha</th>
-    </tr>
-    <tr *ngFor="let cita of listaCitas">
-      <th id="cita-id-{{cita.id}}">{{cita.id}}</th>
-      <th id="cita-veterinario-{{cita.id}}">{{cita.nombreVeterinario}}</th>
-      <th id="cita-mascota-{{cita.id}}">{{cita.nombreMascota}}</th>
-      <th id="cita-servicio-{{cita.id}}">{{cita.nombreServicio}}</th>
-      <th id="cita-pago-{{cita.id}}">{{cita.totalPago}}</th>
-      <th id="cita-fecha-{{cita.id}}">{{cita.fecha}}</th>
-    </tr>
-  </table>
+  <tr>
+    <th id="titulo-id">Id</th>
+    <th id="titulo-veterinario">Nombre Veterinario</th>
+    <th id="titulo-mascota">Nombre Mascota</th>
+    <th id="titulo-servicio">Nombre Servicio</th>
+    <th id="titulo-pago">Total Pago</th>
+    <th id="titulo-fecha">Fecha</th>
+  </tr>
+  <tr *ngFor="let cita of listaCitas">
+    <td id="cita-id-{{cita.id}}">{{cita.id}}</td>
+    <td id="cita-veterinario-{{cita.id}}">{{cita.nombreVeterinario}}</td>
+    <td id="cita-mascota-{{cita.id}}">{{cita.nombreMascota}}</td>
+    <td id="cita-servicio-{{cita.id}}">{{cita.nombreServicio}}</td>
+    <td id="cita-pago-{{cita.id}}">{{cita.totalPago}}</td>
+    <td id="cita-fecha-{{cita.id}}">{{cita.fecha}}</td>
+  </tr>
+</table>

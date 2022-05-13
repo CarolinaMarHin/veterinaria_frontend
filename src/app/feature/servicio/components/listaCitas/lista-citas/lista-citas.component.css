@@ -60,5 +60,14 @@ span {
 @media screen and (max-width: 998px) {
     table {
         width: 80%;
+        margin: 10px;    
+    }
+
+    .div-input-servicio .input-codigo {
+        width: 35%;
+    }
+
+    .input-btn {
+        width: 55%;
     }
 }
