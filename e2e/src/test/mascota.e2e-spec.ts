@@ -1,6 +1,7 @@
 import { NavbarPage } from '../page/navbar/navbar.po';
 import { AppPage } from '../app.po';
 import { MascotaPage } from '../page/producto/mascota.po';
+import { by, element } from 'protractor';
 
 describe('workspace-project Producto', () => {
     let page: AppPage;
@@ -17,7 +18,7 @@ describe('workspace-project Producto', () => {
         const NOMBRE_MASCOTA = 'Canela';
         const CODIGO_MASCOTA = '0002';
         const PESO_MASCOTA = 23;
-        const FECHA_NACIMIENTO_MASCOTA = '2021-03-12';
+        const FECHA_NACIMIENTO_MASCOTA = '12-03-2021';
         const RAZA_MASCOTA = 'Husky';
 
         page.navigateTo();
@@ -28,13 +29,30 @@ describe('workspace-project Producto', () => {
         mascota.ingresarPeso(PESO_MASCOTA);
         mascota.ingresarRaza(RAZA_MASCOTA);
         mascota.ingresarFecha(FECHA_NACIMIENTO_MASCOTA);
+        mascota.clickInputCrearMascota();
+
+        const mensajeResultado = element(by.id('registro-exitoso'));
+        expect(mensajeResultado.getText()).toBe("Registro exitoso.");
     });
 
-    it('Deberia crear la mascota', () => {
+    it('Deberia fallar crear mascota', () => {
+        const NOMBRE_MASCOTA = 'Canela';
+        const CODIGO_MASCOTA = '';
+        const PESO_MASCOTA = 23;
+        const FECHA_NACIMIENTO_MASCOTA = '12-03-2021';
+        const RAZA_MASCOTA = 'Husky';
+
         page.navigateTo();
         navBar.clickBotonMascota();
         mascota.clickBotonCrearMascota();
+        mascota.ingresarNombre(NOMBRE_MASCOTA);
+        mascota.ingresarCodigo(CODIGO_MASCOTA);
+        mascota.ingresarPeso(PESO_MASCOTA);
+        mascota.ingresarRaza(RAZA_MASCOTA);
+        mascota.ingresarFecha(FECHA_NACIMIENTO_MASCOTA);
+        mascota.clickInputCrearMascota();
 
-        expect(1).toBe(mascota.clickInputCrearMascota());
+        const mensajeResultado = element(by.id('registro-error'));
+        expect(mensajeResultado.getText()).toBe("Error al registrar la mascota, intente nuevamente.");
     });
 });

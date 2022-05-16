@@ -1,6 +1,7 @@
 import { NavbarPage } from '../page/navbar/navbar.po';
 import { AppPage } from '../app.po';
 import { ServicioPage } from '../page/producto/servicio.po';
+import { by, element } from 'protractor';
 
 describe('workspace-project Producto', () => {
     let page: AppPage;
@@ -14,8 +15,7 @@ describe('workspace-project Producto', () => {
     });
 
     it('Deberia crear servicio', () => {
-        const FECHA = '2021-03-12';
-        const PRECIO = '55200';
+        const FECHA = '15-03-2021';
 
         page.navigateTo();
         navBar.clickBotonServicio();
@@ -23,15 +23,10 @@ describe('workspace-project Producto', () => {
         servicio.seleccionarServicio();
         servicio.seleccionarVeterinario();
         servicio.seleccionarMascota();
-        servicio.ingresarPrecio(PRECIO);
         servicio.ingresarFecha(FECHA);
-    });
+        servicio.clickInputCrearServicio();
 
-    it('Deberia crear el servicio', () => {
-        page.navigateTo();
-        navBar.clickBotonServicio();
-        servicio.clickBotonCrearServicio();
-
-        expect(1).toBe(servicio.clickInputCrearServicio());
+        const mensajeResultado = element(by.id('registro-exitoso'));
+        expect(mensajeResultado.getText()).toBe("Registro exitoso.");
     });
 });

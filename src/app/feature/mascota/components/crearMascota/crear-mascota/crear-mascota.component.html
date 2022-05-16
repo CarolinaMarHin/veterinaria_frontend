@@ -28,7 +28,7 @@
     </div>
     <input id="crear-mascota" class="input-btn-crear" type="submit" value="Crear Mascota" (click)="registroMascota()"/>
     <br>
-    <div class="alert alert-danger" *ngIf="this.mostrarMensajeError">Error al registrar la mascota, intente nuevamente.</div>
-    <div class="alert alert-success" *ngIf="this.mostrarMensaje">Registro exitoso.</div>
+    <div id="registro-error" class="alert alert-danger" *ngIf="this.mostrarMensajeError">Error al registrar la mascota, intente nuevamente.</div>
+    <div id="registro-exitoso" class="alert alert-success" *ngIf="this.mostrarMensaje">Registro exitoso.</div>
 </form>
 </div>
